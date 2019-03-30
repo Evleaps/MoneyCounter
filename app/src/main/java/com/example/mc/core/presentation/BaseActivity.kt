@@ -13,7 +13,28 @@ abstract class BaseActivity<P : IBasePresenter>: AppCompatActivity(), IBaseView 
         presenter.onViewCreated()
     }
 
+    override fun onStart() {
+        super.onStart()
+        presenter.onStarted()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onResumed()
+    }
+
+    override fun onPause() {
+        presenter.onPause()
+        super.onPause()
+    }
+
+    override fun onStop() {
+        presenter.onStop()
+        super.onStop()
+    }
+
     override fun onDestroy() {
+        presenter.onDestroy()
         presenter.detachView()
         super.onDestroy()
     }

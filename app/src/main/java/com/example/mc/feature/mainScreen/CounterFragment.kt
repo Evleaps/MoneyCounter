@@ -24,7 +24,7 @@ class CounterFragment : BaseFragment<CounterContract.Presenter>(), CounterContra
     }
 
     override fun showTotal() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("no t implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

@@ -1,8 +1,7 @@
 package com.example.mc.core.presentation
 
-interface IBasePresenter {
+interface IBasePresenter : ILifeCycle {
     fun attachView(view: IBaseView)
     fun detachView()
     fun onBack()
-    fun onViewCreated()
 }

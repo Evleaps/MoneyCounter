@@ -1,14 +1,13 @@
 package com.example.mc.core.presentation
 
-import com.example.mc.core.router.IRouter
-import com.example.mc.core.router.Router
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import ru.terrakok.cicerone.Router
 
 
-abstract class BasePresenter<V : IBaseView, R : IRouter> : IBasePresenter, KoinComponent {
+abstract class BasePresenter<V : IBaseView> : IBasePresenter, KoinComponent {
     protected var view: V? = null
-    protected val router: Router by inject()
+    private val router by inject<Router>()
 
     override fun attachView(view: IBaseView) {
         this.view = view as V
@@ -19,9 +18,18 @@ abstract class BasePresenter<V : IBaseView, R : IRouter> : IBasePresenter, KoinC
     }
 
     override fun onBack() {
-        router.back()
+        router.exit()
     }
 
+    //LifeCycle Activity
     override fun onViewCreated() {}
+    override fun onStarted() {}
+    override fun onResumed() { }
+    override fun onPause() { }
+    override fun onStop() { }
+    override fun onDestroy() { }
+
+    //LifeCycle Activity
+    override fun onResumeFragments() {}
 }
 
