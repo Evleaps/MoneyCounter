@@ -16,6 +16,4 @@ abstract class BaseFragment<P : IBasePresenter> : IBaseView, Fragment()  {
         presenter.detachView()
         super.onDestroyView()
     }
-
-
 }

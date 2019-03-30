@@ -7,7 +7,6 @@ import org.koin.dsl.module.module
 val presentersModule = module {
 
     factory { CounterPresenter() }
-
     factory { SplashPresenter() }
 
 }
