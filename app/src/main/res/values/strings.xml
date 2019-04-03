@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MoneyCounter</string>
+    <string name="app_name">Money Counter</string>
+
+    <!--common-->
+    <string name="close">Закрыть</string>
+    <string name="ok">Ок</string>
+    <string name="error">Ошибка</string>
+    <string name="repeat">Повторить</string>
+
+    <!-- Money counter -->
+    <string name="payment_btn">Заплатил</string>
+    <string name="give_payment">Введите сумму платежа</string>
+    <string name="give_payment_desc">Вы можете установить сумму платежа по умолчанию, она будет подставляться автоматически каждый раз, когда Вы нажмете на кнопку \"Заплатил\"</string>
+    <string name="give_single_payment_desc">Пожалуйста, введите сумму Вашего платежа</string>
+    <string name="incorrect_int_desc">Обратите внимание, поле не должно содержать символов отличающихся от арабских чисел</string>
+    <string name="total">Сумма выплат</string>
+
 </resources>

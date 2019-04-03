@@ -1,9 +1,13 @@
 package com.example.mc.data.repository
 
+import com.example.mc.data.repository.local.ILocalRepository
 
-import com.example.mc.data.repository.async.IAsyncRepository
+class DataRepository(private val localRepository: ILocalRepository) : IRepository {
+    override fun addPayment(payment: Int) {
+        localRepository.addPayment(payment)
+    }
 
-class DataRepository(private val asyncRepository: IAsyncRepository) : IRepository {
-
-
+    override fun getTotalPayments(): Int {
+        return localRepository.getTotalPayments()
+    }
 }

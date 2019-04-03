@@ -42,7 +42,9 @@ ext {
     rxandroidVersion = '2.1.1'
     rxkotlinVersion = '2.3.0'
     roomVersion = '2.1.0-alpha06'
+  //  roomCoroutinesVersion = '1.1.1'
     koinVersion = '1.0.2'
     recyclerVersion = '1.1.0-alpha03'
     cicerone = '5.0.0'
+    easyPrefsVersion = '1.9.0'
 }

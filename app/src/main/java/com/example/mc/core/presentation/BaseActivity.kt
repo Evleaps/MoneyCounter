@@ -9,8 +9,20 @@ abstract class BaseActivity<P : IBasePresenter>: AppCompatActivity(), IBaseView 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutResource())
         presenter.attachView(this)
         presenter.onViewCreated()
+    }
+
+    /**
+     * @return resource id for activity's layout
+     */
+    private fun getLayoutResource(): Int {
+        val layout = this.javaClass.getAnnotation(Layout::class.java)
+        if (layout == null || layout.layoutRes == 0) {
+            throw AssertionError("Layout for activity ${this.javaClass.simpleName} wasn't declared")
+        }
+        return layout.layoutRes
     }
 
     override fun onStart() {

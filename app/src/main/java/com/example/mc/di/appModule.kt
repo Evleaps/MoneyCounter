@@ -1,11 +1,13 @@
 package com.example.mc.di
 
 import androidx.room.Room
-import com.example.mc.common.DATABASE_NAME
+import com.example.mc.common.Enviroment
 import com.example.mc.data.db.AppDatabase
 import com.example.mc.data.repository.DataRepository
-import com.example.mc.data.repository.async.AsyncDataRepository
-import com.example.mc.data.repository.async.IAsyncRepository
+import com.example.mc.data.repository.IRepository
+import com.example.mc.data.repository.PrefsManager
+import com.example.mc.data.repository.local.ILocalRepository
+import com.example.mc.data.repository.local.LocalRepository
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.module
 import ru.terrakok.cicerone.Cicerone
@@ -15,14 +17,14 @@ val appModule = module {
 
     //Database
     single {
-        Room.databaseBuilder(androidApplication(), AppDatabase::class.java, DATABASE_NAME).build()
+        Room.databaseBuilder(androidApplication(), AppDatabase::class.java, Enviroment.DATABASE_NAME).build()
     }
     single { get<AppDatabase>().getCounterDao() }
 
     //Repository
-    single { AsyncDataRepository(get()) }
-    single<IAsyncRepository> { AsyncDataRepository(get()) }
-    single { DataRepository(get()) }
+    single { PrefsManager() }
+    single<IRepository> { DataRepository(get()) }
+    single<ILocalRepository> { LocalRepository(get()) }
 
     //Cicerone
     single { Cicerone.create() as Cicerone<Router> }
