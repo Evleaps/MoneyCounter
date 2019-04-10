@@ -5,14 +5,6 @@ import com.example.mc.feature.splashScreen.SplashPresenter
 import org.koin.dsl.module.module
 
 val presentersModule = module {
-
-    factory {
-        CounterPresenter(
-            prefs = get(),
-            repo = get()
-        )
-    }
-
+    factory { CounterPresenter() }
     factory { SplashPresenter() }
-
 }

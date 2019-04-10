@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 import com.example.mc.common.Enviroment
 
 @Entity(tableName = Enviroment.PAYMENTS)
-class Payment(
-    @PrimaryKey
-    val id: Long,
-    val payment: Long
-)
+class Payment(val payment: Int) {
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Long? = null
+}

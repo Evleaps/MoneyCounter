@@ -38,13 +38,14 @@ task clean(type: Delete) {
 }
 
 ext {
+    stethoVersion = '1.5.1'
     rxjavaVersion = '2.2.7'
     rxandroidVersion = '2.1.1'
     rxkotlinVersion = '2.3.0'
     roomVersion = '2.1.0-alpha06'
-  //  roomCoroutinesVersion = '1.1.1'
+    coroutinesVersion = '1.2.0-alpha'
     koinVersion = '1.0.2'
-    recyclerVersion = '1.1.0-alpha03'
+    recyclerVersion = '1.1.0-alpha04'
     cicerone = '5.0.0'
     easyPrefsVersion = '1.9.0'
 }

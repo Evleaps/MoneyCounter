@@ -1,14 +1,17 @@
 package com.example.mc.feature.counterScreen
 
+import com.example.mc.common.Utils.launchIO
 import com.example.mc.common.Utils.toInt
 import com.example.mc.core.presentation.BasePresenter
+import com.example.mc.data.repository.DataRepository
 import com.example.mc.data.repository.IRepository
 import com.example.mc.data.repository.PrefsManager
+import kotlinx.coroutines.runBlocking
+import org.koin.standalone.inject
 
-class CounterPresenter(
-    private val prefs: PrefsManager,
-    private val repo: IRepository
-) : BasePresenter<CounterContract.View>(), CounterContract.Presenter {
+class CounterPresenter : BasePresenter<CounterContract.View>(), CounterContract.Presenter {
+    private val prefs: PrefsManager by inject()
+    private val repo: DataRepository by inject()
 
     override fun onViewCreated() {
         super.onViewCreated()
@@ -19,8 +22,10 @@ class CounterPresenter(
     }
 
     private fun getTotalPayments() {
-        val total = repo.getTotalPayments()
-        view?.showTotal(total)
+       launchIO {
+           val total = repo.getTotalPayments()
+           view?.showTotal(total)
+       }
     }
 
     override fun saveDefaultPayment(payment: String) {
@@ -29,13 +34,12 @@ class CounterPresenter(
         }, {
             view?.showIncorrectCodeDialog(true)
         })
-
     }
 
     override fun addNewPayment() {
         val payment = prefs.getDefaultMonthPayment()
         if (payment > 0){
-            repo.addPayment(payment)
+            launchIO { repo.addPayment(payment) }
         } else {
             view?.showGivePaymentDialog()
         }
@@ -43,7 +47,7 @@ class CounterPresenter(
 
     override fun addNewPayment(payment: String) {
         payment.toInt({
-            repo.addPayment(it)
+            launchIO { repo.addPayment(it) }
         }, {
             view?.showIncorrectCodeDialog(false)
         })

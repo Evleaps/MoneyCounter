@@ -8,14 +8,12 @@ import com.example.mc.data.model.entity.Payment
 abstract class CounterDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertPayment(payment: Payment)
+    abstract suspend fun insertPayment(payment: Payment)
 
     @Query("SELECT * FROM ${Enviroment.PAYMENTS}")
-    abstract fun getAllPayments(): List<Int>
+    abstract suspend fun getAllPayments(): List<Payment>
 
     @Transaction
-    open fun getTotal(): Int {
-        return getAllPayments().sum()
-    }
+    open suspend fun getTotal() = getAllPayments().map { it.payment }.sum()
 
 }
