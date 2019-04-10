@@ -1,9 +1,18 @@
 package com.example.mc.data.repository
 
+import android.util.Log
+import com.example.mc.data.repository.local.ILocalRepository
 
-import com.example.mc.data.repository.async.IAsyncRepository
+class DataRepository(private val localRepository: ILocalRepository) : IRepository {
 
-class DataRepository(private val asyncRepository: IAsyncRepository) : IRepository {
+    init { Log.d("ROMAN", "DataRepository") }
 
+    override suspend fun addPayment(payment: Int) {
+        Log.d("ROMAN", "DataRepository2")
+        localRepository.addPayment(payment)
+    }
 
+    override suspend fun getTotalPayments(): Int {
+        return localRepository.getTotalPayments()
+    }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:colorPrimaryDark">@color/orange1</item>
+        <item name="android:navigationBarColor">@color/orange1</item>
+    </style>
+
+    <style name="MessageDialog" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorPrimary">@color/orange1</item>
+        <item name="android:colorAccent">@color/blue1</item>
+    </style>
+</resources>

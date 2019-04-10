@@ -1,4 +1,4 @@
-package com.example.mc.feature.splash
+package com.example.mc.feature.splashScreen
 
 import com.example.mc.core.presentation.IBasePresenter
 import com.example.mc.core.presentation.IBaseView
