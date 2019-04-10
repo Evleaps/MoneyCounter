@@ -43,7 +43,7 @@ class CounterFragment : BaseFragment<CounterContract.Presenter>(), CounterContra
     }
 
     override fun showTotal(total: Int) {
-
+        totalPayments.text = context?.getString(R.string.totalInRub, total.toString())
     }
 
 }

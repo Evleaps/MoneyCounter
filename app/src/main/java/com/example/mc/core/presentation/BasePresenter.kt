@@ -9,7 +9,7 @@ abstract class BasePresenter<V : IBaseView> : IBasePresenter, KoinComponent {
     protected var view: V? = null
     protected val router by inject<Router>()
 
-        override fun attachView(view: IBaseView) {
+    override fun attachView(view: IBaseView) {
         this.view = view as V
     }
 
@@ -23,11 +23,12 @@ abstract class BasePresenter<V : IBaseView> : IBasePresenter, KoinComponent {
 
     //LifeCycle Activity
     override fun onViewCreated() {}
+
     override fun onStarted() {}
-    override fun onResumed() { }
-    override fun onPause() { }
-    override fun onStop() { }
-    override fun onDestroy() { }
+    override fun onResumed() {}
+    override fun onPause() {}
+    override fun onStop() {}
+    override fun onDestroy() {}
 
     //LifeCycle Activity
     override fun onResumeFragments() {}

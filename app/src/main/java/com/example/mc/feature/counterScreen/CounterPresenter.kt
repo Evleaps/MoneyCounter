@@ -3,15 +3,14 @@ package com.example.mc.feature.counterScreen
 import com.example.mc.common.Utils.launchIO
 import com.example.mc.common.Utils.toInt
 import com.example.mc.core.presentation.BasePresenter
-import com.example.mc.data.repository.DataRepository
 import com.example.mc.data.repository.IRepository
 import com.example.mc.data.repository.PrefsManager
-import kotlinx.coroutines.runBlocking
-import org.koin.standalone.inject
+import kotlinx.coroutines.Dispatchers
 
-class CounterPresenter : BasePresenter<CounterContract.View>(), CounterContract.Presenter {
-    private val prefs: PrefsManager by inject()
-    private val repo: DataRepository by inject()
+class CounterPresenter(
+    private val prefs: PrefsManager,
+    private val repo: IRepository
+) : BasePresenter<CounterContract.View>(), CounterContract.Presenter {
 
     override fun onViewCreated() {
         super.onViewCreated()
@@ -22,7 +21,7 @@ class CounterPresenter : BasePresenter<CounterContract.View>(), CounterContract.
     }
 
     private fun getTotalPayments() {
-       launchIO {
+       launchIO(Dispatchers.Main) {
            val total = repo.getTotalPayments()
            view?.showTotal(total)
        }
@@ -47,7 +46,10 @@ class CounterPresenter : BasePresenter<CounterContract.View>(), CounterContract.
 
     override fun addNewPayment(payment: String) {
         payment.toInt({
-            launchIO { repo.addPayment(it) }
+            launchIO {
+                repo.addPayment(it)
+                getTotalPayments()
+            }
         }, {
             view?.showIncorrectCodeDialog(false)
         })

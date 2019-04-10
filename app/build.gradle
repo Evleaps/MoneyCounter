@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -38,6 +40,8 @@ dependencies {
    // Room dependencies
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
 
     // RX dependencies
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
@@ -58,10 +62,10 @@ dependencies {
 
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
 
     // Network debugging
     implementation "com.facebook.stetho:stetho:$rootProject.stethoVersion"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
-
 
 }

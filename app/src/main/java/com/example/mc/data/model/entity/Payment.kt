@@ -8,5 +8,5 @@ import com.example.mc.common.Enviroment
 class Payment(val payment: Int) {
 
     @PrimaryKey(autoGenerate = true)
-    val id: Long? = null
+    var id: Long = 0L
 }

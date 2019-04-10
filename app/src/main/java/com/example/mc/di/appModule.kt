@@ -5,7 +5,6 @@ import com.example.mc.common.Enviroment
 import com.example.mc.data.db.AppDatabase
 import com.example.mc.data.repository.DataRepository
 import com.example.mc.data.repository.PrefsManager
-import com.example.mc.data.repository.local.ILocalRepository
 import com.example.mc.data.repository.local.LocalRepository
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.module
@@ -21,8 +20,8 @@ val databaseModule = module {
 
 val repositoryModule = module {
     single { PrefsManager() }
-    single { DataRepository() }
-    single { LocalRepository() }
+    single { DataRepository(get() as LocalRepository) }
+    single { LocalRepository(get()) }
 }
 
 val ciceroneModule = module {

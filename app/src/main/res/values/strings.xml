@@ -14,5 +14,6 @@
     <string name="give_single_payment_desc">Пожалуйста, введите сумму Вашего платежа</string>
     <string name="incorrect_int_desc">Обратите внимание, поле не должно содержать символов отличающихся от арабских чисел</string>
     <string name="total">Сумма выплат</string>
+    <string name="totalInRub">%s руб.</string>
 
 </resources>

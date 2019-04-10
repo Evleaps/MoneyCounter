@@ -13,7 +13,7 @@ class TheApp : Application() {
     override fun onCreate() {
         super.onCreate()
         // Start Koin
-        startKoin(this, appModules + presentersModule)
+        startKoin(this@TheApp, appModules + presentersModule)
 
         Prefs.Builder()
             .setContext(this)
