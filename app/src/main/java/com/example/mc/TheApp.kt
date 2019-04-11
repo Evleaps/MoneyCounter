@@ -24,5 +24,4 @@ class TheApp : Application() {
 
         Stetho.initializeWithDefaults(this)
     }
-
 }

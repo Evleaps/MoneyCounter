@@ -7,7 +7,7 @@ import ru.terrakok.cicerone.Navigator
 interface SplashContract {
     interface View : IBaseView
 
-    interface Presenter: IBasePresenter {
+    interface Presenter : IBasePresenter {
         fun setNavigator(navigator: Navigator)
     }
 }

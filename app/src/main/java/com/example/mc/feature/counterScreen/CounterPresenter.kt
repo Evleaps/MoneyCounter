@@ -14,7 +14,7 @@ class CounterPresenter(
 
     override fun onViewCreated() {
         super.onViewCreated()
-        if (prefs.getDefaultMonthPayment() > 0){
+        if (prefs.getDefaultMonthPayment() > 0) {
             view?.showGiveDefaultPaymentDialog()
         }
         getTotalPayments()
@@ -37,7 +37,7 @@ class CounterPresenter(
 
     override fun addNewPayment() {
         val payment = prefs.getDefaultMonthPayment()
-        if (payment > 0){
+        if (payment > 0) {
             launchIO { repo.addPayment(payment) }
         } else {
             view?.showGivePaymentDialog()

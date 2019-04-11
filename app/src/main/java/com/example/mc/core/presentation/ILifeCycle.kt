@@ -11,5 +11,4 @@ interface ILifeCycle {
     fun onDestroy()
 
     fun onResumeFragments()
-
 }

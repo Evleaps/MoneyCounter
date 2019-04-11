@@ -7,7 +7,7 @@ import com.example.mc.common.Enviroment
 import com.example.mc.data.model.dao.CounterDao
 import com.example.mc.data.model.entity.Payment
 
-@Database(entities = [Payment::class], version = Enviroment.DB_VERSION, exportSchema = false )
+@Database(entities = [Payment::class], version = Enviroment.DB_VERSION, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     /**
      * @return The DAO for the DebugMessage table.
