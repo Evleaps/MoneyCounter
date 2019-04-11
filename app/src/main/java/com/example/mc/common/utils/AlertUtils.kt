@@ -1,22 +1,28 @@
-package com.example.mc.common.utils
+package com.example.mc.common.Utils
 
 import android.app.AlertDialog
+import android.content.Context
 import android.widget.EditText
 import com.example.mc.R
 
+
 fun createAlert(
-    params: AlertParamsItem,
+    context: Context,
+    titleResId: Int,
+    msgResId: Int,
+    posBtnResId: Int,
+    negBtnResId: Int,
     onPositiveClick: () -> Unit,
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit = {}
 ): AlertDialog {
-    val builder = AlertDialog.Builder(params.context, R.style.MessageDialog)
-    if (params.titleResId > 0) builder.setTitle(params.titleResId)
-    builder.setMessage(params.msgResId)
+    val builder = AlertDialog.Builder(context, R.style.MessageDialog)
+    if (titleResId > 0) builder.setTitle(titleResId)
+    builder.setMessage(msgResId)
 
-    builder.setPositiveButton(params.posBtnResId) { _, _ -> onPositiveClick() }
-    if (params.negBtnResId > 0) {
-        builder.setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
+    builder.setPositiveButton(posBtnResId) { _, _ -> onPositiveClick() }
+    if (negBtnResId > 0) {
+        builder.setNegativeButton(negBtnResId) { _, _ -> onNegativeClick() }
     }
 
     builder.setOnDismissListener { onDismiss() }
@@ -25,37 +31,49 @@ fun createAlert(
 }
 
 fun showAlert(
-    params: AlertParamsItem,
+    context: Context,
+    titleResId: Int = -1,
+    msgResId: Int,
+    posBtnResId: Int = android.R.string.ok,
+    negBtnResId: Int = -1,
     onPositiveClick: () -> Unit = {},
     onNegativeClick: () -> Unit = {}
 ) {
-    createAlert(params, onPositiveClick, onNegativeClick).show()
+    createAlert(context, titleResId, msgResId, posBtnResId, negBtnResId, onPositiveClick, onNegativeClick).show()
 }
 
 fun showAlertEditText(
-    params: AlertParamsItem,
+    context: Context,
+    titleResId: Int = -1,
+    msgResId: Int,
+    posBtnResId: Int = android.R.string.ok,
+    negBtnResId: Int = -1,
     onPositiveClick: (answer: String) -> Unit = {},
     onNegativeClick: () -> Unit = {}
 ) {
-    createAlertEditText(params, onPositiveClick, onNegativeClick).show()
+    createAlertEditText(context, titleResId, msgResId, posBtnResId, negBtnResId, onPositiveClick, onNegativeClick).show()
 }
 
 fun createAlertEditText(
-    params: AlertParamsItem,
+    context: Context,
+    titleResId: Int,
+    msgResId: Int,
+    posBtnResId: Int,
+    negBtnResId: Int,
     onPositiveClick: (answer: String) -> Unit,
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit = {}
 ): AlertDialog {
-    val builder = AlertDialog.Builder(params.context, R.style.MessageDialog)
-    if (params.titleResId > 0) builder.setTitle(params.titleResId)
-    builder.setMessage(params.msgResId)
+    val builder = AlertDialog.Builder(context, R.style.MessageDialog)
+    if (titleResId > 0) builder.setTitle(titleResId)
+    builder.setMessage(msgResId)
 
-    val input = EditText(params.context)
+    val input = EditText(context)
     builder.setView(input)
 
-    builder.setPositiveButton(params.posBtnResId) { _, _ -> onPositiveClick(input.text.toString()) }
-    if (params.negBtnResId > 0) {
-        builder.setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
+    builder.setPositiveButton(posBtnResId) { _, _ -> onPositiveClick(input.text.toString()) }
+    if (negBtnResId > 0) {
+        builder.setNegativeButton(negBtnResId) { _, _ -> onNegativeClick() }
     }
 
     builder.setOnDismissListener { onDismiss() }
