@@ -1,4 +1,4 @@
-package com.example.mc.common.Utils
+package com.example.mc.common.utils
 
 import kotlinx.coroutines.*
 

@@ -221,7 +221,7 @@ formatting:
     indentSize: 4
     continuationIndentSize: 4
   MaximumLineLength:
-    active: true
+    active: false
     maxLineLength: 120
   ModifierOrdering:
     active: true
@@ -259,7 +259,7 @@ formatting:
     active: true
     autoCorrect: true
   NoWildcardImports:
-    active: true
+    active: false
     autoCorrect: true
   PackageName:
     active: true
@@ -444,7 +444,7 @@ style:
   MandatoryBracesIfStatements:
     active: false
   MaxLineLength:
-    active: true
+    active: false
     maxLineLength: 120
     excludePackageStatements: true
     excludeImportStatements: true
@@ -457,6 +457,7 @@ style:
     active: false
   NewLineAtEndOfFile:
     active: true
+    autoCorrect: true
   NoTabs:
     active: false
   OptionalAbstractKeyword:
@@ -519,5 +520,5 @@ style:
   VarCouldBeVal:
     active: false
   WildcardImport:
-    active: true
+    active: false
     excludeImports: 'java.util.*,kotlinx.android.synthetic.*'
