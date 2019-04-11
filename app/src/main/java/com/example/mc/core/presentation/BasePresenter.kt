@@ -4,7 +4,6 @@ import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import ru.terrakok.cicerone.Router
 
-
 abstract class BasePresenter<V : IBaseView> : IBasePresenter, KoinComponent {
     protected var view: V? = null
     protected val router by inject<Router>()
@@ -21,7 +20,7 @@ abstract class BasePresenter<V : IBaseView> : IBasePresenter, KoinComponent {
         router.exit()
     }
 
-    //LifeCycle Activity
+    // LifeCycle Activity
     override fun onViewCreated() {}
 
     override fun onStarted() {}
@@ -30,7 +29,6 @@ abstract class BasePresenter<V : IBaseView> : IBasePresenter, KoinComponent {
     override fun onStop() {}
     override fun onDestroy() {}
 
-    //LifeCycle Activity
+    // LifeCycle Activity
     override fun onResumeFragments() {}
 }
-

@@ -1,6 +1,6 @@
 package com.example.mc.data.repository
 
-interface IRepository {
+interface IDataRepository {
     suspend fun addPayment(payment: Int)
     suspend fun getTotalPayments(): Int
 }

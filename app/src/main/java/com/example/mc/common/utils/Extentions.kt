@@ -1,7 +1,6 @@
-package com.example.mc.common.Utils
+package com.example.mc.common.utils
 
 import java.lang.NumberFormatException
-
 
 fun CharSequence?.isExistence() = !this.isNullOrEmpty()
 

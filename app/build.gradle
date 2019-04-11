@@ -68,4 +68,6 @@ dependencies {
     implementation "com.facebook.stetho:stetho:$rootProject.stethoVersion"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
 
+    //Code-analysis
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$rootProject.detektVersion"
 }

@@ -15,5 +15,4 @@ abstract class CounterDao {
 
     @Transaction
     open suspend fun getTotal() = getAllPayments().map { it.payment }.sum()
-
 }

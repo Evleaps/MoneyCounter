@@ -3,7 +3,7 @@ package com.example.mc.core.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-abstract class BaseActivity<P : IBasePresenter>: AppCompatActivity(), IBaseView {
+abstract class BaseActivity<P : IBasePresenter> : AppCompatActivity(), IBaseView {
 
     protected abstract val presenter: P
 

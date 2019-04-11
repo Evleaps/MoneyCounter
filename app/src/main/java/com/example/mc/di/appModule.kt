@@ -30,5 +30,4 @@ val ciceroneModule = module {
     single { get<Cicerone<Router>>().navigatorHolder }
 }
 
-
 val appModules = listOf(databaseModule, repositoryModule, ciceroneModule)

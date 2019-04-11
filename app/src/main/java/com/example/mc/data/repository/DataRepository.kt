@@ -3,7 +3,7 @@ package com.example.mc.data.repository
 import android.util.Log
 import com.example.mc.data.repository.local.ILocalRepository
 
-class DataRepository(private val localRepository: ILocalRepository) : IRepository {
+class DataRepository(private val localRepository: ILocalRepository) : IDataRepository {
 
     init { Log.d("ROMAN", "DataRepository") }
 

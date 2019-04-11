@@ -18,4 +18,3 @@ class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.
         presenter.setNavigator(navigator)
     }
 }
-
