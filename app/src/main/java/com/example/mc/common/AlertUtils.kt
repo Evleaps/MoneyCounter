@@ -1,4 +1,4 @@
-package com.example.mc.common.Utils
+package com.example.mc.common
 
 import android.app.AlertDialog
 import android.content.Context
@@ -38,7 +38,15 @@ fun showAlert(
     onPositiveClick: () -> Unit = {},
     onNegativeClick: () -> Unit = {}
 ) {
-    createAlert(context, titleResId, msgResId, posBtnResId, negBtnResId, onPositiveClick, onNegativeClick).show()
+    createAlert(
+        context,
+        titleResId,
+        msgResId,
+        posBtnResId,
+        negBtnResId,
+        onPositiveClick,
+        onNegativeClick
+    ).show()
 }
 
 fun showAlertEditText(
@@ -50,7 +58,15 @@ fun showAlertEditText(
     onPositiveClick: (answer: String) -> Unit = {},
     onNegativeClick: () -> Unit = {}
 ) {
-    createAlertEditText(context, titleResId, msgResId, posBtnResId, negBtnResId, onPositiveClick, onNegativeClick).show()
+    createAlertEditText(
+        context,
+        titleResId,
+        msgResId,
+        posBtnResId,
+        negBtnResId,
+        onPositiveClick,
+        onNegativeClick
+    ).show()
 }
 
 fun createAlertEditText(

@@ -1,4 +1,4 @@
-package com.example.mc.common.utils
+package com.example.mc.common
 
 import android.content.Context
 
