@@ -1,9 +1,6 @@
 package com.example.mc.feature.counterScreen
 
-import com.example.mc.common.Enviroment
-import com.example.mc.common.isPositive
 import com.example.mc.common.utils.launchIO
-import com.example.mc.common.toInt
 import com.example.mc.common.utils.launchMain
 import com.example.mc.core.presentation.BasePresenter
 import com.example.mc.data.repository.IDataRepository
@@ -16,7 +13,7 @@ class CounterPresenter(
 
     override fun onViewCreated() {
         super.onViewCreated()
-        if (prefs.getDefaultMonthPayment() == Enviroment.UNKNOWN_VALUE) {
+        prefs.getDefaultMonthPayment()?.let {
             view?.showGiveDefaultPaymentDialog()
         }
         updateTotalPayments()
@@ -30,34 +27,24 @@ class CounterPresenter(
     }
 
     override fun saveDefaultPayment(payment: String) {
-        payment.toInt({
-            prefs.setDefaultMonthPayment(it)
-        }, {
-            view?.showIncorrectCodeDialog(true)
-        })
-    }
-
-    override fun addNewPayment() {
-        val payment = prefs.getDefaultMonthPayment()
-        if (payment.isPositive()) {
-            launchIO {
-                repo.addPayment(payment)
-                updateTotalPayments()
-            }
-        } else {
-            view?.showGivePaymentDialog()
+        if (payment.isNotBlank()) {
+            prefs.setDefaultMonthPayment(payment)
         }
     }
 
+    override fun addRegularPayment() {
+        val defPayment = prefs.getDefaultMonthPayment()
+
+        defPayment?.let {
+            addNewPayment(defPayment)
+        } ?: view?.showGivePaymentDialog()
+    }
+
     override fun addNewPayment(payment: String) {
-        payment.toInt({
-            launchIO {
-                repo.addPayment(it)
-                updateTotalPayments()
-            }
-        }, {
-            view?.showIncorrectCodeDialog(false)
-        })
+        launchIO {
+            repo.addPayment(payment.toLong())
+            updateTotalPayments()
+        }
     }
 }
 

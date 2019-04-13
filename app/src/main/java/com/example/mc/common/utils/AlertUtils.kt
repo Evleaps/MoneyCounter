@@ -1,6 +1,8 @@
 package com.example.mc.common.utils
 
 import android.app.AlertDialog
+import android.text.InputFilter
+import android.text.InputType
 import android.widget.EditText
 import com.example.mc.R
 
@@ -51,9 +53,17 @@ fun createAlertEditText(
     builder.setMessage(params.msgResId)
 
     val input = EditText(params.context)
+    input.inputType = InputType.TYPE_CLASS_NUMBER
+    input.filters = arrayOf(InputFilter.LengthFilter(15))
     builder.setView(input)
 
-    builder.setPositiveButton(params.posBtnResId) { _, _ -> onPositiveClick(input.text.toString()) }
+    builder.setPositiveButton(params.posBtnResId) { _, _ ->
+        input.text.toString().run {
+            if (isNotBlank()) onPositiveClick(this)
+            else onNegativeClick
+        }
+    }
+
     if (params.negBtnResId > 0) {
         builder.setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
     }

@@ -7,12 +7,12 @@ class DataRepository(private val localRepository: ILocalRepository) : IDataRepos
 
     init { Log.d("ROMAN", "DataRepository") }
 
-    override suspend fun addPayment(payment: Int) {
+    override suspend fun addPayment(payment: Long) {
         Log.d("ROMAN", "DataRepository2")
         localRepository.addPayment(payment)
     }
 
-    override suspend fun getTotalPayments(): Int {
+    override suspend fun getTotalPayments(): Long {
         return localRepository.getTotalPayments()
     }
 }

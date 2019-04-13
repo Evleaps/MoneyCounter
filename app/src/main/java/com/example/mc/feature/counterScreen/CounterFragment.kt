@@ -19,7 +19,7 @@ class CounterFragment : BaseFragment<CounterContract.Presenter>(), CounterContra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         payment_btn.setOnClickListener {
-            presenter.addNewPayment()
+            presenter.addRegularPayment()
         }
     }
 
@@ -42,7 +42,7 @@ class CounterFragment : BaseFragment<CounterContract.Presenter>(), CounterContra
         }
     }
 
-    override fun showTotal(total: Int) {
+    override fun showTotal(total: Long) {
         totalPayments.text = context?.getString(R.string.totalInRub, total.toString())
     }
 }

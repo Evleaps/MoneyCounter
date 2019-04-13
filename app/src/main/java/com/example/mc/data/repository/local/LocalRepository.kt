@@ -6,11 +6,11 @@ import kotlinx.coroutines.runBlocking
 
 class LocalRepository(private val counterDao: CounterDao) : ILocalRepository {
 
-    override suspend fun addPayment(payment: Int) = runBlocking {
+    override suspend fun addPayment(payment: Long) = runBlocking {
         counterDao.insertPayment(Payment(payment))
     }
 
-    override suspend fun getTotalPayments(): Int {
+    override suspend fun getTotalPayments(): Long {
         return counterDao.getTotal()
     }
 }
