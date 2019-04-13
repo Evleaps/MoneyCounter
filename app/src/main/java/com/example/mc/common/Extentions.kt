@@ -11,3 +11,5 @@ fun String.toInt(success: (int: Int) -> Unit, error: () -> Unit) {
         error()
     }
 }
+
+fun Int.isPositive() = this > 0

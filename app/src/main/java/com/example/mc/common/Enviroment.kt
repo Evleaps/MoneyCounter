@@ -12,4 +12,7 @@ object Enviroment {
     // the App
     const val LOG_PREFIX = "TOP_MC"
     const val PREFERENCE_NAME = "easy_preferences"
+
+    // common
+    const val UNKNOWN_VALUE = -1
 }
