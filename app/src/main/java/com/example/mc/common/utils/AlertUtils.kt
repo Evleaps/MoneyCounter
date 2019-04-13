@@ -1,4 +1,4 @@
-package com.example.mc.common
+package com.example.mc.common.utils
 
 import android.app.AlertDialog
 import android.content.Context

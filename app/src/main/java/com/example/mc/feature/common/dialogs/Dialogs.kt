@@ -2,9 +2,9 @@ package com.example.mc.feature.common.dialogs
 
 import android.content.Context
 import com.example.mc.R
-import com.example.mc.common.AlertParamsItem
-import com.example.mc.common.showAlert
-import com.example.mc.common.showAlertEditText
+import com.example.mc.common.utils.AlertParamsItem
+import com.example.mc.common.utils.showAlert
+import com.example.mc.common.utils.showAlertEditText
 
 fun showGiveDefaultPayment(context: Context, okCallback: (defaultPayment: String) -> Unit) {
     showAlertEditText(
