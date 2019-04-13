@@ -4,9 +4,9 @@ import java.lang.NumberFormatException
 
 fun CharSequence?.isExistence() = !this.isNullOrEmpty()
 
-fun String.toInt(success: (int: Int) -> Unit, error: () -> Unit) {
+fun String.toLong(success: (int: Long) -> Unit, error: () -> Unit) {
     try {
-        success(java.lang.Integer.parseInt(this))
+        return success(this.toLong())
     } catch (e: NumberFormatException) {
         error()
     }

@@ -5,7 +5,7 @@ import com.example.mc.core.presentation.IBaseView
 
 interface CounterContract {
     interface View : IBaseView {
-        fun showTotal(total: Int)
+        fun showTotal(total: Long)
         fun showGiveDefaultPaymentDialog()
         fun showGivePaymentDialog()
         fun showIncorrectCodeDialog(isDefaultPayment: Boolean)
@@ -13,7 +13,7 @@ interface CounterContract {
 
     interface Presenter : IBasePresenter {
         fun saveDefaultPayment(payment: String)
+        fun addRegularPayment()
         fun addNewPayment(payment: String)
-        fun addNewPayment()
     }
 }

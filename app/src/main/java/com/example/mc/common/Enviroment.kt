@@ -14,5 +14,5 @@ object Enviroment {
     const val PREFERENCE_NAME = "easy_preferences"
 
     // common
-    const val UNKNOWN_VALUE = -1
+    const val UNKNOWN_VALUE = -1L
 }
