@@ -20,7 +20,6 @@ fun createAlert(
     }
 
     builder.setOnDismissListener { onDismiss() }
-
     return builder.create()
 }
 
