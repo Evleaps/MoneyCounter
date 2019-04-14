@@ -1,6 +1,7 @@
 package com.example.mc.feature.counterScreen
 
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import com.example.mc.R
 import com.example.mc.core.presentation.BaseFragment
@@ -20,6 +21,17 @@ class CounterFragment : BaseFragment<CounterContract.Presenter>(), CounterContra
         super.onViewCreated(view, savedInstanceState)
         payment_btn.setOnClickListener {
             presenter.addRegularPayment()
+        }
+
+        payment_btn.setOnTouchListener { v, event ->
+            /*if (v.isPressed) payment_btn_animation.startRippleAnimation()
+            else payment_btn_animation.stopRippleAnimation()*/
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> payment_btn_animation.startRippleAnimation()
+                MotionEvent.ACTION_UP -> payment_btn_animation.stopRippleAnimation()
+                else -> {}
+            }
+             v?.onTouchEvent(event) ?: true
         }
     }
 

@@ -8,8 +8,8 @@
                 android:width="2dp"
                 android:color="@color/blue1"/>
             <size
-                android:width="200dp"
-                android:height="200dp" />
+                android:width="@dimen/payment_btn_size"
+                android:height="@dimen/payment_btn_size" />
         </shape>
     </item>
 
@@ -17,8 +17,8 @@
         <shape
             android:shape="oval">
             <size
-                android:width="200dp"
-                android:height="200dp" />
+                android:width="@dimen/payment_btn_size"
+                android:height="@dimen/payment_btn_size" />
             <solid android:color="@color/blue1"/>
         </shape>
     </item>
