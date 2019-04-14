@@ -51,4 +51,5 @@ ext {
     cicerone = '5.0.0'
     easyPrefsVersion = '1.9.0'
     ktxVersion = '1.0.1'
+    skyfishjyButton = '1.0.1'
 }

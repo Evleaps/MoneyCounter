@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,21 +22,42 @@
         android:id="@+id/totalPayments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/payment_btn"
-        android:layout_marginBottom="70dp"
+        android:layout_above="@+id/center_view"
+        android:layout_marginBottom="150dp"
         android:textSize="25sp"
         android:textColor="@color/blue1"
         android:layout_centerHorizontal="true"
         tools:text="20000руб" />
 
-    <Button
-        android:id="@+id/payment_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+    <View
+        android:id="@+id/center_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/round_btn"
+        android:layout_centerVertical="true"/>
+
+    <com.skyfishjy.library.RippleBackground
+        android:id="@+id/payment_btn_animation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:text="@string/payment_btn"
-        android:textColor="@drawable/blue_white_selector"/>
+        app:rb_color="@color/blue1"
+        app:rb_duration="2800"
+        app:rb_radius="100dp"
+        app:rb_rippleAmount="3"
+        app:rb_scale="2">
+
+        <Button
+            android:id="@+id/payment_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/round_btn"
+            android:text="@string/payment_btn"
+            android:textColor="@drawable/blue_white_selector" />
+    </com.skyfishjy.library.RippleBackground>
 
 </RelativeLayout>
