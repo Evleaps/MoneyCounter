@@ -1,0 +1,12 @@
+ext {
+    def MAJOR = 1
+    def MINOR = 0
+
+    buildVersionName = {
+        MAJOR + "." + MINOR
+    }
+
+    buildVersionCode = {
+        (MAJOR * 10) + MINOR
+    }
+}
