@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_counter_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/orange1"
     tools:context=".TheApp"
-    android:background="@color/orange1">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/totalPaymentsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/totalPayments"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/blue1"
         android:layout_centerHorizontal="true"
-        android:text="@string/total" />
+        android:layout_marginBottom="10dp"
+        android:text="@string/total"
+        android:textColor="@color/blue1" />
 
     <TextView
         android:id="@+id/totalPayments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/center_view"
-        android:layout_marginBottom="150dp"
-        android:textSize="25sp"
-        android:textColor="@color/blue1"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:textColor="@color/blue1"
+        android:textSize="25sp"
         tools:text="20000руб" />
 
     <View
@@ -34,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true" />
 
     <com.skyfishjy.library.RippleBackground
         android:id="@+id/payment_btn_animation"
@@ -59,5 +60,4 @@
             android:text="@string/payment_btn"
             android:textColor="@drawable/blue_white_selector" />
     </com.skyfishjy.library.RippleBackground>
-
 </RelativeLayout>

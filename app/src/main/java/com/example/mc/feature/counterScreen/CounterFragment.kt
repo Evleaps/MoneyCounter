@@ -9,10 +9,10 @@ import com.example.mc.core.presentation.Layout
 import com.example.mc.feature.common.dialogs.showGiveDefaultPayment
 import com.example.mc.feature.common.dialogs.showGivePayment
 import com.example.mc.feature.common.dialogs.showIncorrectNumberDialog
-import kotlinx.android.synthetic.main.fragment_counter.*
+import kotlinx.android.synthetic.main.fragment_counter_content.*
 import org.koin.android.ext.android.inject
 
-@Layout(R.layout.fragment_counter)
+@Layout(R.layout.fragment_counter_container)
 class CounterFragment : BaseFragment<CounterContract.Presenter>(), CounterContract.View {
 
     override val presenter: CounterPresenter by inject()
