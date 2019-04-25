@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Money Counter</string>
+    <string name="app_name">Калькулятор ипотеки</string>
 
     <!--common-->
     <string name="close">Закрыть</string>
@@ -15,5 +15,19 @@
     <string name="incorrect_int_desc">Обратите внимание, поле не должно содержать символов отличающихся от арабских чисел</string>
     <string name="total">Сумма выплат</string>
     <string name="totalInRub">%s руб.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Navigation Drawer-->
+    <string name="def_payment_btn">Сумма по умолчанию</string>
+    <string name="mortage_calc">Кредитный калькулятор</string>
+    <string name="alarm_clock">Напомнить о платеже</string>
+    <string name="settings">Настройки</string>
+    <string name="about">О программе</string>
 
 </resources>

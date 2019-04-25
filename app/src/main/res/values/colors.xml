@@ -10,10 +10,13 @@
     <color name="orange1">#FADCC8</color>
     <color name="orange4">#FF8F00</color>
     <color name="orange5">#EF6C00</color>
+    <color name="orange6">#F0AB09</color>
 
-    <color name="blue1">#0468B3</color>
+    <color name="blue3">#0468B3</color>
     <color name="blue2">#0277BD</color>
+    <color name="blue1">#64BDD7</color>
     <color name="blue25">#1565C0</color>
+
 
     <color name="beige1">#FFD180</color>
 
