@@ -2,6 +2,7 @@
 <resources>
 
     <style name="AppTheme.NoActionBar">
+        <item name="android:alertDialogTheme">@style/AlertDialog</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

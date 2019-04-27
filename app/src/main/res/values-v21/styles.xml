@@ -4,11 +4,24 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimaryDark">@color/orange1</item>
         <item name="android:navigationBarColor">@color/orange1</item>
+        <item name="android:alertDialogTheme">@style/AlertDialog</item>
     </style>
 
-    <style name="MessageDialog" parent="android:Theme.Material.Light.Dialog.Alert">
-        <item name="android:colorPrimary">@color/orange1</item>
+    <style name="AlertDialog" parent="android:Theme.Material.Light.Dialog.Alert">
+        <!-- background -->
+        <item name="android:background">@color/orange1</item>
+        <!-- buttons color -->
         <item name="android:colorAccent">@color/blue1</item>
+        <!-- text color -->
+        <item name="android:textColor">@color/blue1</item>
+        <item name="android:textColorPrimary">@color/blue1</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

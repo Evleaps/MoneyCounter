@@ -15,5 +15,8 @@ interface CounterContract {
         fun saveDefaultPayment(payment: String)
         fun addRegularPayment()
         fun addNewPayment(payment: String)
+
+        // Navigation drawer
+        fun onDefaultPaymentBtn()
     }
 }

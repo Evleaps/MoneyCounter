@@ -1,10 +1,17 @@
 package com.example.mc.common.utils
 
 import android.app.AlertDialog
+import android.content.Context
+import android.os.Build
 import android.text.InputFilter
 import android.text.InputType
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.FrameLayout
 import com.example.mc.R
+import com.google.android.material.textfield.TextInputLayout
 
 fun createAlert(
     params: AlertParamsItem,
@@ -12,18 +19,19 @@ fun createAlert(
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit = {}
 ): AlertDialog {
-    val builder = AlertDialog.Builder(params.context, R.style.MessageDialog)
-    if (params.titleResId > 0) builder.setTitle(params.titleResId)
-    builder.setMessage(params.msgResId)
+    return AlertDialog.Builder(params.context, R.style.AlertDialog)
+        .apply {
+            if (params.titleResId > 0) setTitle(params.titleResId)
+            if (params.msgResId > 0) setMessage(params.msgResId)
 
-    builder.setPositiveButton(params.posBtnResId) { _, _ -> onPositiveClick() }
-    if (params.negBtnResId > 0) {
-        builder.setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
-    }
+            setPositiveButton(params.posBtnResId) { _, _ -> onPositiveClick() }
+            if (params.negBtnResId > 0) {
+                setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
+            }
 
-    builder.setOnDismissListener { onDismiss() }
-
-    return builder.create()
+            setOnDismissListener { onDismiss() }
+        }
+        .create()
 }
 
 fun showAlert(
@@ -48,27 +56,64 @@ fun createAlertEditText(
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit = {}
 ): AlertDialog {
-    val builder = AlertDialog.Builder(params.context, R.style.MessageDialog)
-    if (params.titleResId > 0) builder.setTitle(params.titleResId)
-    builder.setMessage(params.msgResId)
+    return AlertDialog.Builder(params.context, R.style.AlertDialog)
+        .apply {
+            if (params.titleResId > 0) setTitle(params.titleResId)
+            if (params.msgResId > 0) setMessage(params.msgResId)
 
-    val input = EditText(params.context)
-    input.inputType = InputType.TYPE_CLASS_NUMBER
-    input.filters = arrayOf(InputFilter.LengthFilter(15))
-    builder.setView(input)
+            val input = getEditText(params.context)
+            setView(getViewInLayout(input, params.context))
 
-    builder.setPositiveButton(params.posBtnResId) { _, _ ->
-        input.text.toString().run {
-            if (isNotBlank()) onPositiveClick(this)
-            else onNegativeClick
+            setPositiveButton(params.posBtnResId) { _, _ ->
+                input.text.toString().run {
+                    if (isNotBlank()) onPositiveClick(this)
+                    else onNegativeClick
+                }
+            }
+
+            if (params.negBtnResId > 0) {
+                setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
+            }
+
+            setOnDismissListener { onDismiss() }
+        }
+        .create()
+}
+
+private fun getEditText(context: Context): EditText {
+    return EditText(context).apply {
+        gravity = Gravity.CENTER
+        inputType = InputType.TYPE_CLASS_NUMBER
+        filters = arrayOf(InputFilter.LengthFilter(15))
+
+        setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) setText("")
+            else setText(R.string.def_payment_hint)
+        }
+
+        setText(R.string.def_payment_hint)
+        setPadding(0, 40, 0, 40)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            setTextColor(context.getColor(R.color.orange1))
+            setBackgroundColor(context.getColor(R.color.blue1))
         }
     }
+}
 
-    if (params.negBtnResId > 0) {
-        builder.setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
+private fun getViewInLayout(view: View, context: Context): View {
+    val frameLayoutParam = FrameLayout.LayoutParams(
+        ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT
+    ).apply {
+        setMargins(0, 20, 0, 20)
     }
 
-    builder.setOnDismissListener { onDismiss() }
+    val textInputLayout = TextInputLayout(context).apply {
+        layoutParams = frameLayoutParam
+        addView(view)
+    }
 
-    return builder.create()
+    return FrameLayout(context).apply {
+        addView(textInputLayout)
+    }
 }
