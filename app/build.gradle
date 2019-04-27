@@ -71,5 +71,5 @@ dependencies {
     detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$rootProject.detektVersion"
 
     // Animation
-    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation "com.skyfishjy.ripplebackground:library:$rootProject.skyfishjyButton"
 }

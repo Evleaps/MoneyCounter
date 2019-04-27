@@ -13,9 +13,10 @@ class CounterPresenter(
 
     override fun onViewCreated() {
         super.onViewCreated()
-        prefs.getDefaultMonthPayment()?.let {
+        if (prefs.getDefaultMonthPayment() == null) {
             view?.showGiveDefaultPaymentDialog()
         }
+
         updateTotalPayments()
     }
 
@@ -45,5 +46,9 @@ class CounterPresenter(
             repo.addPayment(payment.toLong())
             updateTotalPayments()
         }
+    }
+
+    override fun onDefaultPaymentBtn() {
+        view?.showGiveDefaultPaymentDialog()
     }
 }

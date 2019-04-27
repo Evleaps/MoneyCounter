@@ -7,7 +7,7 @@ import com.example.mc.core.presentation.Layout
 import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 
-@Layout(R.layout.layout_container)
+@Layout(R.layout.activity_splash)
 class SplashActivity : BaseActivity<SplashContract.Presenter>(), SplashContract.View {
 
     override val presenter: SplashPresenter by inject()
