@@ -7,7 +7,11 @@
     <color name="yellow1">#CDDC39</color>
     <color name="yellow2">#FFEB3B</color>
 
+    <color name="white1">#FDFDFE</color>
+    <color name="white2">#E0DEE1</color>
+
     <color name="orange1">#FADCC8</color>
+    <color name="orange1_2">#BBA496</color>
     <color name="orange4">#FF8F00</color>
     <color name="orange5">#EF6C00</color>
     <color name="orange6">#F0AB09</color>
