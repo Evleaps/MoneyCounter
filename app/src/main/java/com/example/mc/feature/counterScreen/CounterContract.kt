@@ -18,5 +18,6 @@ interface CounterContract {
 
         // Navigation drawer
         fun onDefaultPaymentBtn()
+        fun navigateToAboutScreen()
     }
 }

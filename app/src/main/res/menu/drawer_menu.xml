@@ -1,21 +1,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/menu_group_1">
         <item
-            android:id="@+id/default_payment_menu"
+            android:id="@+id/drawer_def_payment_menu"
             android:title="@string/def_payment_btn" />
         <item
-            android:id="@+id/mortage_calc"
+            android:id="@+id/drawer_mortgage_calc"
             android:title="@string/mortage_calc" />
         <item
-            android:id="@+id/alarm_clock"
+            android:id="@+id/drawer_alarm_clock"
             android:title="@string/alarm_clock" />
+
+        <item
+            android:id="@+id/drawer_statistics"
+            android:title="@string/statistic" />
+        <item
+            android:id="@+id/drawer_set_values"
+            android:title="@string/statistic" />
     </group>
     <group android:id="@+id/menu_group_2">
         <item
-            android:id="@+id/menu_settings"
+            android:id="@+id/drawer_settings"
             android:title="@string/settings"/>
         <item
-            android:id="@+id/menu_about"
+            android:id="@+id/drawer_about"
             android:title="@string/about" />
     </group>
 </menu>

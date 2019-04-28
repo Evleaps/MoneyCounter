@@ -7,7 +7,7 @@
     <string name="error">Ошибка</string>
     <string name="repeat">Повторить</string>
 
-    <!-- Money counter -->
+    <!-- Money Counter screen-->
     <string name="payment_btn">Заплатил</string>
     <string name="give_payment">Введите сумму платежа</string>
     <string name="def_payment_hint">Введите платеж</string>
@@ -21,7 +21,15 @@
     <string name="def_payment_btn">Сумма по умолчанию</string>
     <string name="mortage_calc">Кредитный калькулятор</string>
     <string name="alarm_clock">Напомнить о платеже</string>
+    <string name="statistic">Статистика</string>
+    <string name="values">Задать историю</string>
     <string name="settings">Настройки</string>
     <string name="about">О программе</string>
+
+    <!-- About screen -->
+    <string name="app_version">Версия ПО: %s</string>
+    <string name="app_stack">Технологический стек</string>
+    <string name="about_title_version_card">Здравствуйте, спасибо, что пользуетесь нашим приложением!</string>
+    <string name="about_title_like_me_card">Если Вам нравится наше приложение, пожалуйста, оцените его в 5 звезд!</string>
 
 </resources>

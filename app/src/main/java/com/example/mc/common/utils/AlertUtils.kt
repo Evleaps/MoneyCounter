@@ -13,19 +13,22 @@ import android.widget.FrameLayout
 import com.example.mc.R
 import com.google.android.material.textfield.TextInputLayout
 
+const val UNINITIALIZED_RES_ID = 0
+
 fun createAlert(
     params: AlertParamsItem,
     onPositiveClick: () -> Unit,
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit = {}
 ): AlertDialog {
+
     return AlertDialog.Builder(params.context, R.style.AlertDialog)
         .apply {
-            if (params.titleResId > 0) setTitle(params.titleResId)
-            if (params.msgResId > 0) setMessage(params.msgResId)
+            if (params.titleResId != UNINITIALIZED_RES_ID) setTitle(params.titleResId)
+            if (params.msgResId != UNINITIALIZED_RES_ID) setMessage(params.msgResId)
 
             setPositiveButton(params.posBtnResId) { _, _ -> onPositiveClick() }
-            if (params.negBtnResId > 0) {
+            if (params.negBtnResId != UNINITIALIZED_RES_ID) {
                 setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
             }
 
@@ -58,8 +61,8 @@ fun createAlertEditText(
 ): AlertDialog {
     return AlertDialog.Builder(params.context, R.style.AlertDialog)
         .apply {
-            if (params.titleResId > 0) setTitle(params.titleResId)
-            if (params.msgResId > 0) setMessage(params.msgResId)
+            if (params.titleResId != UNINITIALIZED_RES_ID) setTitle(params.titleResId)
+            if (params.msgResId != UNINITIALIZED_RES_ID) setMessage(params.msgResId)
 
             val input = getEditText(params.context)
             setView(getViewInLayout(input, params.context))
@@ -71,7 +74,7 @@ fun createAlertEditText(
                 }
             }
 
-            if (params.negBtnResId > 0) {
+            if (params.negBtnResId != UNINITIALIZED_RES_ID) {
                 setNegativeButton(params.negBtnResId) { _, _ -> onNegativeClick() }
             }
 
@@ -80,11 +83,15 @@ fun createAlertEditText(
         .create()
 }
 
+const val PADDING_EDIT_TEXT = 40
+const val MAX_STRING_LENGTH = 15
+
 private fun getEditText(context: Context): EditText {
+
     return EditText(context).apply {
         gravity = Gravity.CENTER
         inputType = InputType.TYPE_CLASS_NUMBER
-        filters = arrayOf(InputFilter.LengthFilter(15))
+        filters = arrayOf(InputFilter.LengthFilter(MAX_STRING_LENGTH))
 
         setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) setText("")
@@ -92,7 +99,7 @@ private fun getEditText(context: Context): EditText {
         }
 
         setText(R.string.def_payment_hint)
-        setPadding(0, 40, 0, 40)
+        setPadding(0, PADDING_EDIT_TEXT, 0, PADDING_EDIT_TEXT)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             setTextColor(context.getColor(R.color.orange1))
             setBackgroundColor(context.getColor(R.color.blue1))
@@ -100,12 +107,15 @@ private fun getEditText(context: Context): EditText {
     }
 }
 
+const val MARGIN_LAYOUT = 20
+
 private fun getViewInLayout(view: View, context: Context): View {
+
     val frameLayoutParam = FrameLayout.LayoutParams(
         ViewGroup.LayoutParams.MATCH_PARENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     ).apply {
-        setMargins(0, 20, 0, 20)
+        setMargins(0, MARGIN_LAYOUT, 0, MARGIN_LAYOUT)
     }
 
     val textInputLayout = TextInputLayout(context).apply {

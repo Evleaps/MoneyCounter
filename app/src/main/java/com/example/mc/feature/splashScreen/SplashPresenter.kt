@@ -11,7 +11,7 @@ class SplashPresenter : BasePresenter<SplashContract.View>(), SplashContract.Pre
     private val navigatorHolder by inject<NavigatorHolder>()
 
     override fun onViewCreated() {
-        router.newRootScreen(Screens.CounterFragment)
+        router.newRootScreen(Screens.CounterScreen)
     }
 
     override fun setNavigator(navigator: Navigator) {

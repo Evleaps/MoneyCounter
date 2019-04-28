@@ -1,10 +1,13 @@
 package com.example.mc.core.presentation
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mc.R
 
 abstract class BaseFragment<P : IBasePresenter> : IBaseView, Fragment() {
     protected abstract val presenter: P
@@ -13,14 +16,28 @@ abstract class BaseFragment<P : IBasePresenter> : IBaseView, Fragment() {
      * @return resource id for activity's layout
      */
     private fun getLayoutResource(): Int {
-        val layout = this.javaClass.getAnnotation(Layout::class.java)
-        if (layout == null || layout.layoutRes == 0) {
-            throw AssertionError("Layout for fragment ${this.javaClass.simpleName} wasn't declared")
+        return this.javaClass.getAnnotation(Layout::class.java)?.layoutRes
+            ?: throw AssertionError("Layout for the activity ${this.javaClass.simpleName} wasn't declared")
+    }
+
+    /**
+     * @return resource id of color for change status bar
+     */
+    private fun getStatusBarColorResource() = this.javaClass.getAnnotation(StatusBarColor::class.java)?.styleRes ?: getDefaultStatusBarColor()
+
+    private fun getDefaultStatusBarColor(): Int {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            context?.getColor(R.color.orange1) ?: Color.TRANSPARENT
+        } else {
+            Color.TRANSPARENT
         }
-        return layout.layoutRes
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = activity?.window
+            window?.statusBarColor = getStatusBarColorResource()
+        }
         return inflater.inflate(getLayoutResource(), container, false)
     }
 

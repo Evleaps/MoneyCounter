@@ -5,6 +5,7 @@ import com.example.mc.common.utils.launchMain
 import com.example.mc.core.presentation.BasePresenter
 import com.example.mc.data.repository.IDataRepository
 import com.example.mc.data.repository.PrefsManager
+import com.example.mc.router.Screens
 
 class CounterPresenter(
     private val prefs: PrefsManager,
@@ -50,5 +51,9 @@ class CounterPresenter(
 
     override fun onDefaultPaymentBtn() {
         view?.showGiveDefaultPaymentDialog()
+    }
+
+    override fun navigateToAboutScreen() {
+        router.navigateTo(Screens.AboutScreen)
     }
 }
