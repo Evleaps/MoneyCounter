@@ -13,10 +13,25 @@ android {
         versionName buildVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/fragment_counter/navigation_drawer',
+                            'src/main/res/layouts/fragment_counter',
+                            'src/main/res/layouts/activity_splash',
+                            'src/main/res/layouts/fragment_about',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
         }
     }
 
